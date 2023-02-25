@@ -11,35 +11,45 @@ class DicePage extends StatefulWidget {
 class _DicePageState extends State<DicePage> {
   int leftNum = 1;
   int rightNum = 1;
+  void changeNum() {
+    leftNum = Random().nextInt(6) + 1;
+    rightNum = Random().nextInt(6) + 1;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Center(
-        child: Row(
-          children: [
-            Expanded(
-              child: TextButton(
-                onPressed: () {
-                  setState(() {
-                    leftNum = Random().nextInt(6) + 1;
-                    rightNum = Random().nextInt(6) + 1;
-                  });
-                },
-                child: Image.asset('assets/images/dice$leftNum.png'),
+    return TextButton(
+      onPressed: () {
+        setState(() {
+          changeNum();
+        });
+      },
+      child: SafeArea(
+        child: Center(
+          child: Row(
+            children: [
+              Expanded(
+                child: TextButton(
+                  onPressed: () {
+                    setState(() {
+                      //changeNum();
+                    });
+                  },
+                  child: Image.asset('assets/images/dice$leftNum.png'),
+                ),
               ),
-            ),
-            Expanded(
-              child: TextButton(
-                onPressed: () {
-                  setState(() {
-                    leftNum = Random().nextInt(6) + 1;
-                    rightNum = Random().nextInt(6) + 1;
-                  });
-                },
-                child: Image.asset('assets/images/dice$rightNum.png'),
+              Expanded(
+                child: TextButton(
+                  onPressed: () {
+                    setState(() {
+                      //changeNum();
+                    });
+                  },
+                  child: Image.asset('assets/images/dice$rightNum.png'),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
